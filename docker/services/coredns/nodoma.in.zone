@@ -1,0 +1,17 @@
+$ORIGIN nodoma.in.
+@       3600 IN      SOA     ns1.nodoma.in. admin.nodoma.in. (
+              2021050200 ; Serial
+              86400      ; Refresh
+              3600       ; Retry
+              2419200    ; Expire
+              60         ; Negative Cache TTL
+)
+
+; name servers - NS records
+@   3600     IN      NS      ns1.nodoma.in.
+ 
+; name servers - A records
+ns1      IN      A      172.16.100.10
+ 
+@        IN      A      172.16.100.11
+www      IN      A      172.16.100.11

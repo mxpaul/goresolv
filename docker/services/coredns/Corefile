@@ -1,0 +1,14 @@
+.:53 {
+    bind 172.16.100.10
+    log
+    errors
+    forward . 8.8.8.8 8.8.4.4
+}
+
+nodoma.in.:53 {
+    bind 172.16.100.10
+    file /etc/coredns/nodoma.in.zone
+    log
+    errors
+}
+

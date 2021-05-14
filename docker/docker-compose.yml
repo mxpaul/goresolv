@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  coredns_master:
+    image: coredns/coredns:latest
+    container_name: coredns_master
+    volumes:
+      - ./services/coredns/:/etc/coredns/
+    ports:
+      - "0.0.0.0:53:53/tcp"
+      - "0.0.0.0:53:53/udp"
+    command: "-conf /etc/coredns/Corefile"
+    networks:
+      static-network:
+        ipv4_address: 172.16.100.10
+        #depends_on:
+        #  - app
+        #env_file: .env_test
+networks:
+  static-network:
+    ipam:
+      config:
+        - subnet: 172.16.100.0/24
+
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.production
+#    image: mxpatlas/devops-for-programmers-project-lvl1:prod
+#    container_name: nodeos_prod
+#    #restart: unless-stopped
+#    #environment: {}
+#    command: npm test
+#    depends_on:
+#      - db
+#    env_file: .env_test
+#  db:
+#    image: postgres:13.2
+#    container_name: pg_db_nodeos
+#    restart: always
+#    env_file: .env_test
+
+
